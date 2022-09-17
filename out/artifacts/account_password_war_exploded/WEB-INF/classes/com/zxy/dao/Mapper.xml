@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxy.dao.Mapper">
+    <insert id="addAccount" parameterType="Account">
+        insert into info(type,name,account,password,remark)
+        values (#{type},#{name},#{account},#{password},#{remark})
+    </insert>
+
+    <delete id="delAccount">
+        delete from info
+        where id=#{id}
+    </delete>
+
+    <update id="updateAccount" parameterType="Account">
+        update info
+        set type = #{type},
+            name = #{name},
+            account = #{account},
+            password = #{password},
+            remark = #{remark}
+        where id = #{id}
+    </update>
+
+    <select id="queryAccount" resultType="Account">
+        select * from info where id = #{id}
+    </select>
+
+    <select id="allAccount" resultType="Account">
+        select * from info
+    </select>
+</mapper>
